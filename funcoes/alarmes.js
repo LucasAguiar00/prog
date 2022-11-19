@@ -31,12 +31,12 @@ function msg_alerta(){
 
     Notification.requestPermission(/* opcional: callback */);
     
-    var notification = new Notification("Título", {
-        icon: 'https://www.google.com.br/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Fbr%2Ficone-gratis%2Frelogio-de-parede_1648302&psig=AOvVaw0ggnGCI2gHdDEFi6XvWvia&ust=1668906504718000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNjCv6yHufsCFQAAAAAdAAAAABAE',
+    var notification = new Notification("ALERTA", {
+        icon: 'https://cdn-icons-png.flaticon.com/512/1648/1648302.png',
         body: "Hora de sair..."
     });
     notification.onclick = function() {
-        window.open("http://stackoverflow.com");
+        //window.open("http://stackoverflow.com");
     }
 
 }
