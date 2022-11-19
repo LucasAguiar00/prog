@@ -6,6 +6,10 @@ var atalho4 = window.document.getElementById("atalho4");
 var atalho5 = window.document.getElementById("atalho5");
 var atalho6 = window.document.getElementById("atalho6");
 
+var pausa_1 = window.document.getElementById("pausa_1");
+var intervalo = window.document.getElementById("intervalo");
+var pausa_2 = window.document.getElementById("pausa_2");
+
 var key_protocolo = window.document.getElementById("key_protocolo");
 
 function salvar(){
@@ -21,6 +25,10 @@ function salvar(){
     localStorage.setItem('txt_atalho6', atalho6.value);
     localStorage.setItem('txt_key_protocolo', key_protocolo.value);
 
+    localStorage.setItem('txt_key_pausa_1', pausa_1.value);
+    localStorage.setItem('txt_intervalo', intervalo.value);
+    localStorage.setItem('txt_pausa_2', pausa_2.value);
+
     
 
     window.close();
@@ -35,6 +43,10 @@ function carregar(){
     atalho5.value = localStorage.getItem('txt_atalho5')
     atalho6.value = localStorage.getItem('txt_atalho6')
     key_protocolo.value = localStorage.getItem('txt_key_protocolo')
+
+    pausa_1.value = localStorage.getItem('txt_key_pausa_1')
+    intervalo.value = localStorage.getItem('txt_intervalo')
+    pausa_2.value = localStorage.getItem('txt_pausa_2')
 }
 
 /*
