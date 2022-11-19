@@ -29,6 +29,7 @@ var tempo3 = converter_segundos_string(pausa_2) - converter_segundos(agora)
 
 function alerta_exato(duration, display,msg_ativa=true) {
     var timer = duration, minutes, seconds;
+    if (duration>0){
     setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -44,11 +45,13 @@ function alerta_exato(duration, display,msg_ativa=true) {
             }                        
         }
     }, 1000);
+    }
 }
 
 
 function alerta_2m(duration, display,msg_ativa=true) {
     var timer = duration, minutes, seconds;
+    if (duration>0){
     setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -64,25 +67,28 @@ function alerta_2m(duration, display,msg_ativa=true) {
             }                        
         }
     }, 1000);
+    }
 }
 
 function alerta_20m(duration, display,msg_ativa=true) {
     var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        //display.textContent = "Sua próxima pausa será em: "+ minutes + ":" + seconds;
-        if (--timer < 0) {
-            //timer = duration;
-            //display.textContent = "Acabou";
-            if (msg_ativa == true){
-                falta_20min()
-                msg_ativa = false
-            }                        
-        }
-    }, 1000);
+    if (duration>0){
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            //display.textContent = "Sua próxima pausa será em: "+ minutes + ":" + seconds;
+            if (--timer < 0) {
+                //timer = duration;
+                //display.textContent = "Acabou";
+                if (msg_ativa == true){
+                    falta_20min()
+                    msg_ativa = false
+                }                        
+            }
+        }, 1000);
+    }
 }
 
 window.onload = function (){
@@ -93,16 +99,16 @@ window.onload = function (){
     
     var ativar = true; // Se true o alerta é exibido
 
-    if (tempo1!=null)||(tempo1>0){
+    if ((tempo1!=null)||(tempo1>0)){
         alerta_exato(tempo1, display,ativar); // iniciando o timer
         alerta_2m(tempo1-120, display,ativar); // iniciando o timer 
     }
-    if (tempo2!=null)||(tempo2>0){
+    if ((tempo2!=null)||(tempo2>0)){
         alerta_exato(tempo2, display,ativar); // iniciando o timer
         alerta_2m(tempo2-120, display,ativar); // iniciando o timer
         alerta_20m(tempo2-1200, display,ativar); // iniciando o timer
     }
-    if (tempo3!=null)||(tempo3>0){
+    if ((tempo3!=null)||(tempo3>0)){
         alerta_exato(tempo3, display,ativar); // iniciando o timer                
         alerta_2m(tempo3-120, display,ativar); // iniciando o timer
     }
