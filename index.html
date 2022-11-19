@@ -1,0 +1,156 @@
+<!-- 
+    //Autor: Lucas Aguiar
+    //Ultima edição: 15/11/2022
+-->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titulo">Atendimento via chat</title>
+
+    <link rel="stylesheet" href="estilos/index.css">
+
+    <!-- Including Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+
+
+    <!-- Including jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+    </script>
+
+    <!-- Including Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+    </script>
+
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+
+
+
+</head>
+
+<body style="background-color: #35363f;" onmousemove="mudar_titulo()" id="corpo_tela_principal">
+    <!-- rgb(40,42,54) -->
+
+    <header>
+        <button type="button" id="fechar" class="btn btn-danger" onclick="javascript:window.close()">Fechar</button>        
+        <a href="index.html" target="_blank" id="novo"><button type="button" class="btn btn-success">Nova Aba</button></a>
+        <div>
+            <br>             
+            <div id="notificacao"> </div>
+            <span id="timer"></span>           
+            
+        </div>
+    </header>
+    <div class="container" id="tela_atendimento">
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <div id="celula_atd_1">
+
+                    <div id="dados_iniciais">
+
+
+                        <input type="text" id="protocolo_chat" placeholder="Protocolo do Chat" style="color: blue;">
+                        <input type="text" id="protocolo_adm" placeholder="Protocolo do ADM" style="color: red;"> <br>
+
+                        <input type="text" id="nome_cliente" placeholder="Nome do cliente" onchange="mudar_titulo()">
+                        <input type="tel" id="telefone" placeholder="(xx) y xxxx-xxxx"> <br> <br>
+
+                        <input type="text" id="bfp" placeholder="BFP" value="Padrão Fibra"> <br>
+
+                        <textarea id="descricao" cols="70" rows="8"
+                            placeholder="Descreva aqui a demanda do atendimento..."></textarea> <br> <br>
+                    </div>
+
+                    <div id="vs">
+                        Horário de preferência:
+                        <span id="hpfr" onchange="fun_h_preferencia()">
+                            <select id="h_preferencia" onchange="fun_h_preferencia()">                            
+                                <option></option>                        
+                                <option value="Manhã">Manhã</option>
+                                <option value="Tarde">Tarde</option>
+                                <option value="Sem preferência">Sem preferência</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </span>                    
+                        <br>
+                        Ponto de referência:
+                        <input type="search" id="ponto_referencia">
+                    </div>
+                    <br>
+                    <div id="botoes">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col col-lg-3"> </div>
+                                <div class="col"><button type="button" id="Protocolo" class="btn btn_width btn-warning"
+                                        onclick="protocolo()">Protocolo</button></div>
+                                <div class="col"><button type="button" id="Copiar" class="btn btn_width btn-warning"
+                                        onclick="copiar()">Copiar</button></div>
+                                <div class="col"><button type="button" id="Transferir" class="btn btn_width btn-warning"
+                                        onclick="transferir()">Transferir</button></div>
+                                <div class="col"><button type="button" id="Apagar" class="btn btn_width btn-warning"
+                                        onclick="Apagar()">Apagar</button></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+
+                <section>
+                    <div id="btn_atalhos">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" id="btn_cpf" class="btn btn-secondary btn_atalho2"
+                                        onclick="cpf()" ondblclick="x()" onchange="cpf_corrigir()">CPF</button>
+                                </div>
+                                <div class="col">
+                                    <a href="LGPD.html" target="_blank"> <button type="button" id=""
+                                            class="btn btn-secondary btn_atalho2" onclick="">LGPD</button> </a>
+                                </div>
+                                <div class="w-100"></div> <br> <div class="w-100"></div>
+                                <div class="col"><button type="button" id="" class="btn btn-info btn_atalho" onclick="atalho1()">Atalho 1</button> </div>
+                                <div class="col"><button type="button" id="" class="btn btn-info btn_atalho" onclick="atalho2()">Atalho 2</button></div>
+                                <div class="w-100"></div>
+                                <div class="col"><button type="button" id="" class="btn btn-info btn_atalho" onclick="atalho3()">Atalho 3</button> </div>                                
+                                <div class="col"><button type="button" id="" class="btn btn-info btn_atalho" onclick="atalho4()">Atalho 4</button> </div>
+                                <div class="w-100"></div>
+                                <div class="col"><button type="button" id="" class="btn btn-info btn_atalho" onclick="atalho5()">Atalho 5</button></div>
+                                <div class="col"><button type="button" id="" class="btn btn-info btn_atalho" onclick="atalho6()">Atalho 6</button> </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+            <div class="col">
+
+            </div>
+        </div>
+
+        <footer>
+            <a href="config.html" target="_blank">CONFIGURAÇÕES</a>
+        </footer>
+
+    </div>
+
+
+
+
+    <script src="funcoes/f_botoes.js"></script>
+    <script src="funcoes/alarmes.js"></script>
+</body>
+
+</html>

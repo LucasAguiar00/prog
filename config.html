@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações da Plataforma</title>
+
+    <link rel="stylesheet" href="estilos/config.css">
+
+    <!-- Including Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+
+
+    <!-- Including jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+    </script>
+
+    <!-- Including Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+    </script>
+
+</head>
+<body style="background-color: rgb(53, 54, 63);" onload="carregar()">
+    <h1> <strong>Configurações da Plataforma</strong> </h1>
+    <!--
+    <div>        
+        <input type="time" id="1_pausa"> 
+        <label for="1_pausa">Primeira Pausa</label> <br>
+        
+        <input type="time" id="intervalo"> 
+        <label for="intervalo">Intervalo</label><br>
+        
+        <input type="time" id="2_pausa">
+        <label for="2_pausa">Segunda Pausa</label>
+    </div>
+    -->
+
+    <div>
+        <div id="atalhos">
+            <span id="titulo2">  CADASTRAR ATALHOS  </span> <br> <br>
+
+            <label for="atalho1">Atalho 1</label> <br>
+            <input type="text" class="texto_atalho" id="atalho1"> <br> <br>
+            
+            <label for="atalho2">Atalho 2</label> <br>
+            <input type="text" class="texto_atalho" id="atalho2"> <br> <br>
+            
+            <label for="atalho3">Atalho 3</label> <br>
+            <input type="text" class="texto_atalho" id="atalho3"> <br> <br>
+            
+            <label for="atalho1">Atalho 4</label> <br>
+            <input type="text" class="texto_atalho" id="atalho4"> <br> <br>
+            
+            <label for="atalho2">Atalho 5</label> <br>
+            <input type="text" class="texto_atalho" id="atalho5"> <br> <br>
+            
+            <label for="atalho3">Atalho 6</label> <br>
+            <input type="text" class="texto_atalho" id="atalho6"> <br> <br>
+            
+        </div>
+        <br>
+        <div id="chave_p">
+            <label for="key_protocolo">Chave Protocolo: </label>        
+            <select id="key_protocolo">                            
+                <option value=".">Ponto (.) </option>
+                <option value=",">Vírgula (,) </option>
+                <option value=";">Ponto e vírgula (;) </option>
+            </select> <br> <br>
+        </div>
+        <br>
+            <!--
+            Cor de fundo página principal: 
+            <input type="color" id="cor_fundo" value="#35363f" onchange="mud_cor_fundo()"> <br><br>
+
+            Cor das fontes: 
+            <input type="color" id="cor_fundo" value="#FFFFFF" onchange="mud_cor_fonte()"> <br><br>
+            -->
+        
+
+        <div id="pausas">
+        <span id="titulo">  CADASTRAR NOTIFICAÇAO DE PAUSA   </span> <br> <br>
+        01ª Pausa 10 min: <input type="time" class="texto_atalho2" id="pausa_1"> <br>
+        Intervalo 20 min: <input type="time" class="texto_atalho2" id="intervalo"> <br>
+        02ª Pausa 20 min: <input type="time" class="texto_atalho2" id="pausa_2"> <br>
+        </div>
+            
+        <br> <br>
+
+    </div>
+
+    
+    <div>
+        <button type="button" id="Salvar" class="btn btn-warning" onclick="salvar()">Salvar</button>
+    </div>
+
+    <div id="notificacao"></div>
+
+    <script src="funcoes/config.js"></script>
+
+</body>
+
+</html>
