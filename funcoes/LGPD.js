@@ -41,7 +41,8 @@ function copiar(){
     var tel4 = document.getElementById("tel4").value
     var email = document.getElementById("email").value
 
-    var texto_completo = `No seu cadastro constam as seguintes informações para contato:\nDeseja alterar algum contato?` 
+    var texto_completo = `No seu cadastro constam as seguintes informações para contato: ` 
+    //var texto_completo = `No seu cadastro constam as seguintes informações para contato:\nDeseja alterar algum contato?` 
     //deseja remover ou adicionar algum contato?
     
     var DDD
@@ -54,11 +55,11 @@ function copiar(){
         if (tamanho==11){   
             DDD = tel.substring(0,2)
             contato = tel.substring(7,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) X XXXX-${contato}`
+            texto_completo = texto_completo + ` (${DDD}) X XXXX-${contato}`
         }else{
             DDD = tel.substring(0,2)
             contato = tel.substring(6,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) XXXX-${contato}`
+            texto_completo = texto_completo + ` (${DDD}) XXXX-${contato}`
         }                
     }
 
@@ -68,11 +69,11 @@ function copiar(){
         if (tamanho==11){   
             DDD = tel.substring(0,2)
             contato = tel.substring(7,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) X XXXX-${contato}`
+            texto_completo = texto_completo + `, (${DDD}) X XXXX-${contato}`
         }else{
             DDD = tel.substring(0,2)
             contato = tel.substring(6,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) XXXX-${contato}`
+            texto_completo = texto_completo + `, (${DDD}) XXXX-${contato}`
         }                 
     }
 
@@ -82,11 +83,11 @@ function copiar(){
         if (tamanho==11){   
             DDD = tel.substring(0,2)
             contato = tel.substring(7,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) X XXXX-${contato}`
+            texto_completo = texto_completo + `, (${DDD}) X XXXX-${contato}`
         }else{
             DDD = tel.substring(0,2)
             contato = tel.substring(6,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) XXXX-${contato}`
+            texto_completo = texto_completo + `, (${DDD}) XXXX-${contato}`
         }                 
     }
 
@@ -96,11 +97,11 @@ function copiar(){
         if (tamanho==11){   
             DDD = tel.substring(0,2)
             contato = tel.substring(7,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) X XXXX-${contato}`
+            texto_completo = texto_completo + `, (${DDD}) X XXXX-${contato}`
         }else{
             DDD = tel.substring(0,2)
             contato = tel.substring(6,tamanho)
-            texto_completo = texto_completo + `\n (${DDD}) XXXX-${contato}`
+            texto_completo = texto_completo + `, (${DDD}) XXXX-${contato}`
         }                 
     }
 
@@ -110,11 +111,11 @@ function copiar(){
         var arroba = email.search('@')
         var email_novo = email.substring(0,2)+"********"+ email.substring(arroba,email.length)
         
-        texto_completo = texto_completo + `\n ${email_novo}`
+        texto_completo = texto_completo + ` e ${email_novo}`
 
     }
 
-    //texto_completo = texto_completo + `\nDeseja remover ou adicionar algum contato?`
+    texto_completo = texto_completo + `. Deseja remover ou adicionar algum contato?`
 
     // Passando as informações para a área de transferência
     navigator.clipboard.writeText(texto_completo)    

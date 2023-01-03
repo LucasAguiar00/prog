@@ -17,6 +17,25 @@ var b_copiar = window.document.getElementById("Copiar")
 var b_tranferir = window.document.getElementById("Transferir")
 var b_apagar = window.document.getElementById("Apagar")
 
+// COPIA O PROTOCOLO DO ADM AO CLICAR
+function copiar_protocolo_adm(){
+    
+    if (protocolo_adm.value != "") {
+        // Passando as informações para a área de transferência
+        navigator.clipboard.writeText(protocolo_adm.value);
+
+        // Exibindo a notificação de texto copiado por 2 segundos
+        let notificacao = document.getElementById("notificacao")
+        notificacao.innerHTML = '<div class="alert alert-secondary" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> <strong>Protocolo do ADM copiado com sucesso!</strong> </div>'
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 1000);
+    }
+
+}
+
 // Mudar o titulo
 function mudar_titulo(){
     var titulo = window.document.getElementById("titulo")
@@ -25,19 +44,20 @@ function mudar_titulo(){
     }
 
     cpf_corrigir();
+    tema_change();
 
     // Exibindo a notificação de texto copiado por 2 segundos
     let notificacao = document.getElementById("notificacao")
     if (notificacao.innerHTML != '') {
         window.setTimeout(function () {
-            $(".alert").fadeTo(500, 0).slideUp(500, function () {
-                $(this).remove();
-            });
-        }, 1000);
+            notificacao.innerHTML = ""
+        }, 5000);
     }    
 
     
 }
+
+
 
 //  Função Apagar
 //      Questiona se o usuário deseja apagar.
@@ -95,6 +115,12 @@ window.onload = function(){
 	}
 }
 
+window.onmousemove = function(){
+    id('telefone').onkeyup = function(){
+		mascara( this, mtel );
+	}    
+}
+
 
 
 // Função protocolo
@@ -137,7 +163,7 @@ function copiar(){
     
     // Coletando a data atual para registrar no protocolo
     let data = new Date()
-    let dia = data.getUTCDate()-1 
+    let dia = data.getUTCDate()
     let mes = data.getUTCMonth()+1
     if (dia<10){
         dia = String(dia)
@@ -151,8 +177,10 @@ function copiar(){
     
     // Condição em caso de VS
     // Se tiver o horario de preferência e o ponto de referência ele adiciona as informações no texto
-    if (ponto_referencia.value!=h_preferencia.value){
-        var texto_vs = `<hr> Horário de preferência: ${h_preferencia.value} <br> Ponto de referência: ${ponto_referencia.value} <hr>`
+    
+    var h_preferencia = window.document.getElementById("h_preferencia")
+    if (ponto_referencia.value!=h_preferencia.value){                
+        var texto_vs = `<hr> <b>Horário de preferência:</b> ${h_preferencia.value} <br> <b>Ponto de referência:</b> ${ponto_referencia.value} <hr>` 
         texto_completo = texto_completo + texto_vs
     }
 
@@ -179,6 +207,15 @@ function x(){
 
     // Passando as informações para a área de transferência
     navigator.clipboard.writeText(atalho)
+
+    // Exibindo a notificação de texto copiado por 2 segundos
+    let notificacao = document.getElementById("notificacao")
+    notificacao.innerHTML = '<div class="alert alert-dark" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> <strong>CPF COPIADO COM SUCESSO!</strong></div>'
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove(); 
+        });
+    }, 2000);
 
 }
 
@@ -365,8 +402,61 @@ function fun_h_preferencia(){
     
     
     if (h_preferencia == "Outro"){
-        hpfr.innerHTML = `<input type="input" id="h_preferencia2" Placeholder="Digite aqui o horário...">`
+        hpfr.innerHTML = `<input type="input" id="h_preferencia" Placeholder="Digite aqui o horário...">`
         
+    }
+
+}
+
+
+function mudar_tema(){
+    btn_tema = document.getElementById("tema")
+    t1 = document.getElementById("t1")
+    t2 = document.getElementById("t2")
+    foot = document.getElementById("foot")
+    var tema = localStorage.getItem('tema')
+
+    if (btn_tema.className == "btn btn btn-dark"){        
+        localStorage.setItem('tema', "tema_claro")
+        btn_tema.className = "btn btn btn-light"
+        document.body.style.background = "#35363f"        
+        t1.style.color = "white"
+        t2.style.color = "white"
+        foot.style.color = "white"   
+    }else{
+        localStorage.setItem('tema', "tema_escuro")          
+        btn_tema.className = "btn btn btn-dark"        
+        document.body.style.background = "#BDC3C7" //Cinza
+        t1.style.color = "black"
+        t2.style.color = "black"
+        foot.style.color = "black"   
+    }
+}
+
+
+
+
+function tema_change(){
+    btn_tema = document.getElementById("tema")
+    t1 = document.getElementById("t1")
+    t2 = document.getElementById("t2")
+    foot = document.getElementById("foot")
+    var tema = localStorage.getItem('tema')
+    //alert(tema)
+    if (tema=="tema_escuro"){
+        btn_tema.className = "btn btn btn-dark"        
+        document.body.style.background = "#BDC3C7" //Cinza
+        t1.style.color = "black"
+        t2.style.color = "black"
+        foot.style.color = "black"     
+    } else {     
+        btn_tema.className = "btn btn btn-dark"        
+        btn_tema.className = "btn btn btn-light"
+        document.body.style.background = "#35363f"        
+        t1.style.color = "white"
+        t2.style.color = "white"
+        foot.style.color = "white"       
+
     }
 
 }

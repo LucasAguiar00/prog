@@ -1,3 +1,4 @@
+
 var pausa_1 = localStorage.getItem('txt_key_pausa_1')
 var intervalo = localStorage.getItem('txt_intervalo')
 var pausa_2 = localStorage.getItem('txt_pausa_2') // fica no formato 00:00
@@ -20,6 +21,7 @@ function converter_segundos_string(pausa){
     pausa = hora*60*60 + min*60 // transforma tudo em segundos
     return pausa
 }
+
 
 // CALCULA QUANDO TEMPO FALTA ATÉ A PAUSA EM SEGUNDOS
 var tempo1 = converter_segundos_string(pausa_1) - converter_segundos(agora)
